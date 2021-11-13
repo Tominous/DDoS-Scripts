@@ -89,7 +89,7 @@ struct urlparts {
 	{ "port", ":" },
 	{ "path", "/" },
 	{ "param", ";" },
-	/*{ "query", "?" },*/
+	{ "query", "?" },
 	{ "fragment", "#" }
 };
 enum partnames { scheme = 0, userid, password, host, port, path, param, query, fragment } ;
@@ -359,7 +359,7 @@ int main(int argc, char *argv[ ]) {
 	{
 		//rps=0;
 		sleep(1);
-		//printf("R/s: %d\n", rps);
+		printf("R/s: %d\n", rps);
 	}
 	return 0;
 }
@@ -408,8 +408,8 @@ void setupparts()
 	strcpy(returnparts[5]->separator, "/");
 	returnparts[6]->name = "param";
 	strcpy(returnparts[6]->separator, ";");
-	/*returnparts[7]->name = "query";
-	strcpy(returnparts[7]->separator, "?");*/
+	returnparts[7]->name = "query";
+	strcpy(returnparts[7]->separator, "?");
 	returnparts[7]->name = "fragment";
 	strcpy(returnparts[7]->separator, "#");
 	return;
