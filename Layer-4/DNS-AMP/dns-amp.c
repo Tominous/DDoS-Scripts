@@ -225,7 +225,7 @@ void *flood(void *par1)
 
                         strcpy(strDomain, list_node->domain);
                         ChangetoDnsNameFormat(qname, strDomain);
-                        //printf("!!%s %d\n", list_node->domain, list_node->line);
+                        printf("!!%s %d\n", list_node->domain, list_node->line);
 
                         iAdditionalSize += strlen(qname) + 1;
 
@@ -288,7 +288,7 @@ void ParseResolverLine(char *strLine, int iLine)
                 }
         }
 
-        //printf("Found resolver %s, domain %s!\n", caIP, caDNS);
+        printf("Found resolver %s, domain %s!\n", caIP, caDNS);
 
         if(head == NULL)
         {
