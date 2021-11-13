@@ -958,7 +958,7 @@ void freeparts()
 	if(returnparts[5]!=NULL) { free(returnparts[5]); }
 	if(returnparts[6]!=NULL) { free(returnparts[6]); }
 	if(returnparts[7]!=NULL) { free(returnparts[7]); }
-	/*if(returnparts[8]!=NULL) { free(returnparts[8]); }*/
+	if(returnparts[8]!=NULL) { free(returnparts[8]); }
 	return;
 }
 void setupparts()
@@ -971,7 +971,7 @@ void setupparts()
 	returnparts[5] = malloc(sizeof(struct urlparts));
 	returnparts[6] = malloc(sizeof(struct urlparts));
 	returnparts[7] = malloc(sizeof(struct urlparts));
-	/*returnparts[8] = malloc(sizeof(struct urlparts));*/
+	returnparts[8] = malloc(sizeof(struct urlparts));
 	bzero(returnparts[0], sizeof(struct urlparts));
 	bzero(returnparts[1], sizeof(struct urlparts));
 	bzero(returnparts[2], sizeof(struct urlparts));
@@ -980,7 +980,7 @@ void setupparts()
 	bzero(returnparts[5], sizeof(struct urlparts));
 	bzero(returnparts[6], sizeof(struct urlparts));
 	bzero(returnparts[7], sizeof(struct urlparts));
-	/*bzero(returnparts[8], sizeof(struct urlparts));*/
+	bzero(returnparts[8], sizeof(struct urlparts));
 	returnparts[0]->name = "scheme";
 	strcpy(returnparts[0]->separator, ":");
 	returnparts[1]->name = "userid";
@@ -995,8 +995,8 @@ void setupparts()
 	strcpy(returnparts[5]->separator, "/");
 	returnparts[6]->name = "param";
 	strcpy(returnparts[6]->separator, ";");
-	/*returnparts[7]->name = "query";
-	strcpy(returnparts[7]->separator, "?");*/
+	returnparts[7]->name = "query";
+	strcpy(returnparts[7]->separator, "?");
 	returnparts[7]->name = "fragment";
 	strcpy(returnparts[7]->separator, "#");
 	return;
@@ -1005,9 +1005,9 @@ int parseURL(char *url, struct urlparts **returnpart) {
 	register i;
 	int seplen;
 	char * remainder;
-	//char * regall = ":/;?#";
+	char * regall = ":/;?#";
 	char * regall = ":/;#";
-	//char * regpath = ":;?#";
+	char * regpath = ":;?#";
 	char * regpath = ":;#";
 	char * regx;
 	if(!*url)
@@ -1257,7 +1257,7 @@ int evalmath(char *input)
 	
 	X.top = -1;
 	
-	//debugstack = 1;
+	debugstack = 1;
 	
 	char *outorig = output;
 	
