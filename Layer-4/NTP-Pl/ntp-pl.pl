@@ -54,8 +54,8 @@ sub main {
     $packet = ip_header();
     $packet .= udp_header();
     $packet .= payload();
-                #send_packet($packet) && goto repeat;
-                #send_packet($packet)
+                send_packet($packet) && goto repeat;
+                send_packet($packet)
 for (1 .. $ppr) {
         send_packet($packet) or last;
         }
